@@ -16,7 +16,8 @@ import javax.crypto.spec.PBEKeySpec;
 public final class Seguridad {
 
     private static final String ALGORITMO = "PBKDF2WithHmacSHA256";
-    private static final int ITERACIONES = 100_000;
+    /** Iteraciones recomendadas por OWASP para PBKDF2-HMAC-SHA256. */
+    private static final int ITERACIONES = 600_000;
     private static final int LARGO_LLAVE_BITS = 256;
     private static final int LARGO_SAL_BYTES = 16;
     private static final SecureRandom ALEATORIO = new SecureRandom();
