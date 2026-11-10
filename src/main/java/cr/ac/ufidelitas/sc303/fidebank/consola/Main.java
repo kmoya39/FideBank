@@ -1,5 +1,6 @@
 package cr.ac.ufidelitas.sc303.fidebank.consola;
 
+import cr.ac.ufidelitas.sc303.fidebank.excepcion.SaldoInsuficienteException;
 import cr.ac.ufidelitas.sc303.fidebank.modelo.*;
 
 import java.io.IOException;

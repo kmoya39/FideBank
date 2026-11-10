@@ -1,5 +1,6 @@
 package cr.ac.ufidelitas.sc303.fidebank.modelo;
 
+import cr.ac.ufidelitas.sc303.fidebank.excepcion.SaldoInsuficienteException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;

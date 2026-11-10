@@ -1,5 +1,6 @@
 package cr.ac.ufidelitas.sc303.fidebank.modelo;
 
+import cr.ac.ufidelitas.sc303.fidebank.excepcion.SaldoInsuficienteException;
 /**
  * Clase abstracta con lo común a toda cuenta bancaria.
  * Cada tipo de cuenta define su propia forma de retirar (polimorfismo).

@@ -1,5 +1,6 @@
 package cr.ac.ufidelitas.sc303.fidebank.modelo;
 
+import cr.ac.ufidelitas.sc303.fidebank.excepcion.SaldoInsuficienteException;
 /**
  * Cuenta corriente: permite retirar el saldo más un sobregiro autorizado.
  */
