@@ -14,7 +14,7 @@
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <exec.mainClass>cr.ac.ufidelitas.sc303.fidebank.consola.Main</exec.mainClass>
+        <exec.mainClass>cr.ac.ufidelitas.sc303.fidebank.App</exec.mainClass>
     </properties>
 
     <build>
