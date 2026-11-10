@@ -65,7 +65,7 @@ public class PanelComprobante extends PantallaBase {
         this.ejecutarEnSegundoPlano(
                 () -> this.ventana.getServicio().imprimirComprobante(this.transaccion),
                 archivo -> {
-                    Dialogos.informar(this, "Comprobante impreso en el archivo:\n" + archivo.toAbsolutePath());
+                    Dialogos.informar(this, "Comprobante impreso en el archivo:\n" + archivo);
                     this.ventana.mostrar(VentanaCajero.MENU);
                 },
                 error -> Dialogos.mostrarError(this, error),
