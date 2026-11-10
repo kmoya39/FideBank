@@ -1,4 +1,4 @@
-package fidebank;
+package cr.ac.ufidelitas.sc303.fidebank.modelo;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

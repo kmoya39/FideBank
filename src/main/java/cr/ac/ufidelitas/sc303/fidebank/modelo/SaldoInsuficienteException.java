@@ -1,4 +1,4 @@
-package fidebank;
+package cr.ac.ufidelitas.sc303.fidebank.modelo;
 
 /**
  * Excepción propia que se lanza cuando la cuenta no tiene dinero suficiente.

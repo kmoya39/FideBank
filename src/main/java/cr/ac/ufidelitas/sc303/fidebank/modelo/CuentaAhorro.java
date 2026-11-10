@@ -1,4 +1,4 @@
-package fidebank;
+package cr.ac.ufidelitas.sc303.fidebank.modelo;
 
 /**
  * Cuenta de ahorro: solo se puede retirar el saldo que existe.

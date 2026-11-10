@@ -1,4 +1,4 @@
-package fidebank;
+package cr.ac.ufidelitas.sc303.fidebank.modelo;
 
 import java.io.FileWriter;
 import java.io.IOException;

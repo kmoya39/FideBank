@@ -1,4 +1,4 @@
-package fidebank;
+package cr.ac.ufidelitas.sc303.fidebank.modelo;
 
 /**
  * Clase abstracta con lo común a toda cuenta bancaria.

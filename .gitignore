@@ -1,0 +1,11 @@
+target/
+bin/
+out/
+.vscode/
+.idea/
+nbproject/private/
+*.class
+# Datos generados al ejecutar
+datos/
+comprobantes/
+comprobante_*.txt

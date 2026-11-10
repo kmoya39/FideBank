@@ -1,4 +1,4 @@
-package fidebank;
+package cr.ac.ufidelitas.sc303.fidebank.modelo;
 
 /**
  * Cuenta corriente: permite retirar el saldo más un sobregiro autorizado.
