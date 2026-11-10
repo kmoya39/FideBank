@@ -1,44 +1,52 @@
 package cr.ac.ufidelitas.sc303.fidebank.modelo;
 
+import cr.ac.ufidelitas.sc303.fidebank.excepcion.DatoInvalidoException;
 import cr.ac.ufidelitas.sc303.fidebank.excepcion.SaldoInsuficienteException;
+import java.math.BigDecimal;
+
 /**
  * Cuenta de ahorro: solo se puede retirar el saldo que existe.
  */
 public class CuentaAhorro extends Cuenta {
 
-    private double tasaInteres;
+    private static final long serialVersionUID = 1L;
+
+    private BigDecimal tasaInteres;
 
     /**
      * @param titular      dueño de la cuenta
      * @param saldoInicial depósito de apertura
      * @param tasaInteres  tasa anual en porcentaje
      */
-    public CuentaAhorro(Cliente titular, double saldoInicial, double tasaInteres) {
+    public CuentaAhorro(Cliente titular, BigDecimal saldoInicial, BigDecimal tasaInteres) {
         super(titular, saldoInicial);
         this.tasaInteres = tasaInteres;
     }
 
     @Override
-    public void retirar(double monto) throws SaldoInsuficienteException {
-        if (monto <= 0) {
-            throw new IllegalArgumentException("El monto debe ser mayor que cero.");
+    public void retirar(BigDecimal monto) throws SaldoInsuficienteException, DatoInvalidoException {
+        validarMontoPositivo(monto);
+        if (monto.compareTo(this.saldo) > 0) {
+            throw new SaldoInsuficienteException("Saldo insuficiente.");
         }
-        if (monto > saldo) {
-            throw new SaldoInsuficienteException("Saldo insuficiente en la cuenta de ahorro.");
-        }
-        saldo -= monto;
+        this.saldo = this.saldo.subtract(monto);
     }
 
     @Override
-    public String getTipo() {
-        return "Ahorro";
+    public BigDecimal getDisponible() {
+        return this.saldo;
     }
 
-    public double getTasaInteres() {
-        return tasaInteres;
+    @Override
+    public TipoCuenta getTipo() {
+        return TipoCuenta.AHORRO;
     }
 
-    public void setTasaInteres(double tasaInteres) {
+    public BigDecimal getTasaInteres() {
+        return this.tasaInteres;
+    }
+
+    public void setTasaInteres(BigDecimal tasaInteres) {
         this.tasaInteres = tasaInteres;
     }
 }

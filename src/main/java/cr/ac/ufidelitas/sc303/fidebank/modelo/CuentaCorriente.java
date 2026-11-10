@@ -1,45 +1,53 @@
 package cr.ac.ufidelitas.sc303.fidebank.modelo;
 
+import cr.ac.ufidelitas.sc303.fidebank.excepcion.DatoInvalidoException;
 import cr.ac.ufidelitas.sc303.fidebank.excepcion.SaldoInsuficienteException;
+import java.math.BigDecimal;
+
 /**
  * Cuenta corriente: permite retirar el saldo más un sobregiro autorizado.
  */
 public class CuentaCorriente extends Cuenta {
 
-    private double sobregiro;
+    private static final long serialVersionUID = 1L;
+
+    private BigDecimal sobregiro;
 
     /**
      * @param titular      dueño de la cuenta
      * @param saldoInicial depósito de apertura
      * @param sobregiro    monto extra que el banco presta
      */
-    public CuentaCorriente(Cliente titular, double saldoInicial, double sobregiro) {
+    public CuentaCorriente(Cliente titular, BigDecimal saldoInicial, BigDecimal sobregiro) {
         super(titular, saldoInicial);
         this.sobregiro = sobregiro;
     }
 
     @Override
-    public void retirar(double monto) throws SaldoInsuficienteException {
-        if (monto <= 0) {
-            throw new IllegalArgumentException("El monto debe ser mayor que cero.");
-        }
+    public void retirar(BigDecimal monto) throws SaldoInsuficienteException, DatoInvalidoException {
+        validarMontoPositivo(monto);
         // Se permite quedar en negativo hasta el límite del sobregiro
-        if (monto > saldo + sobregiro) {
-            throw new SaldoInsuficienteException("El monto supera el saldo y el sobregiro disponible.");
+        if (monto.compareTo(this.getDisponible()) > 0) {
+            throw new SaldoInsuficienteException("Saldo insuficiente. El monto supera el saldo y el sobregiro disponible.");
         }
-        saldo -= monto;
+        this.saldo = this.saldo.subtract(monto);
     }
 
     @Override
-    public String getTipo() {
-        return "Corriente";
+    public BigDecimal getDisponible() {
+        return this.saldo.add(this.sobregiro);
     }
 
-    public double getSobregiro() {
-        return sobregiro;
+    @Override
+    public TipoCuenta getTipo() {
+        return TipoCuenta.CORRIENTE;
     }
 
-    public void setSobregiro(double sobregiro) {
+    public BigDecimal getSobregiro() {
+        return this.sobregiro;
+    }
+
+    public void setSobregiro(BigDecimal sobregiro) {
         this.sobregiro = sobregiro;
     }
 }
