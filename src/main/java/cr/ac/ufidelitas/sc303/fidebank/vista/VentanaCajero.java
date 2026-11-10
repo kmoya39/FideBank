@@ -36,6 +36,7 @@ public class VentanaCajero extends JFrame {
     private final LinkedHashMap<String, PantallaBase> pantallas;
     private transient Cliente clienteActual;
     private transient Cuenta cuentaActual;
+    private PanelComprobante panelComprobante;
 
     /**
      * @param servicio servicio compartido del banco
@@ -54,6 +55,8 @@ public class VentanaCajero extends JFrame {
         this.agregarPantalla(RETIRO, new PanelRetiro(this));                // HU-04
         this.agregarPantalla(DEPOSITO, new PanelDeposito(this));            // HU-05
         this.agregarPantalla(TRANSFERENCIA, new PanelTransferencia(this));  // HU-06
+        this.panelComprobante = new PanelComprobante(this);                 // HU-07
+        this.agregarPantalla(COMPROBANTE, this.panelComprobante);           // HU-07
 
         this.setContentPane(this.contenedor);
         this.pack();
@@ -108,8 +111,12 @@ public class VentanaCajero extends JFrame {
      * @param transaccion transacción realizada
      */
     public void mostrarComprobante(Transaccion transaccion) {
-        // La pantalla del comprobante se agrega con la HU-07
-        this.mostrar(MENU);
+        if (this.panelComprobante != null) {
+            this.panelComprobante.setTransaccion(transaccion);
+            this.mostrar(COMPROBANTE);
+        } else {
+            this.mostrar(MENU);
+        }
     }
 
     /**
