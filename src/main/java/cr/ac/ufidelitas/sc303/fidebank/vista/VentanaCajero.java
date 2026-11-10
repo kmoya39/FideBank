@@ -49,6 +49,8 @@ public class VentanaCajero extends JFrame {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         this.agregarPantalla(INGRESO, new PanelIngreso(this));              // HU-02
+        this.agregarPantalla(MENU, new PanelMenu(this));                    // HU-03
+        this.agregarPantalla(SALDO, new PanelSaldo(this));                  // HU-03
 
         this.setContentPane(this.contenedor);
         this.pack();
