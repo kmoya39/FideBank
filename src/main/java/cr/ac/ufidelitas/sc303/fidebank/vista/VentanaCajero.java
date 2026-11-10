@@ -53,6 +53,7 @@ public class VentanaCajero extends JFrame {
         this.agregarPantalla(SALDO, new PanelSaldo(this));                  // HU-03
         this.agregarPantalla(RETIRO, new PanelRetiro(this));                // HU-04
         this.agregarPantalla(DEPOSITO, new PanelDeposito(this));            // HU-05
+        this.agregarPantalla(TRANSFERENCIA, new PanelTransferencia(this));  // HU-06
 
         this.setContentPane(this.contenedor);
         this.pack();
